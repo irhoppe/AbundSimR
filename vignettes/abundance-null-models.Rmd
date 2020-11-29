@@ -1,0 +1,33 @@
+---
+title: "Abundance Matrix Randomization Algorithms"
+author: "Ian Hoppe"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Abundance null models}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo=FALSE, results="asis"}
+alg.table <- data.frame(rbind(
+              Functions=paste0("asim",c(1:14)), 
+              Algorithm=c("PM","PR","PC","OS","OF","IR","IS","ISR","ISC","IT","ITR","ITC","IA","IF"),
+      `Total abundance`=c(T,T,T,T,NA,F,NA,F,F,T,T,T,T,NA), 
+    `Total occurrences`=c(T,T,T,T,NA,F,NA,T,T,F,F,F,T,NA), 
+            Occurrences=c(T,T,T,T,NA,F,NA,F,F,F,F,F,T,NA), 
+   `Species abundances`=c(F,T,T,F,NA,F,NA,F,F,T,T,F,T,NA), 
+  `Species occurrences`=c(T,T,T,T,NA,F,NA,T,F,F,F,F,T,NA), 
+      `Site abundances`=c(F,F,T,F,NA,F,NA,F,F,T,F,T,T,NA), 
+     `Site occurrences`=c(T,T,T,T,NA,F,NA,F,T,F,F,F,T,NA)
+), stringsAsFactors=FALSE )
+
+names(alg.table) <- matrix(alg.table[1,])
+alg.table <- alg.table[-1,]
+alg.table[which(alg.table=="TRUE",arr.ind=T)] <- "X"
+alg.table[which(alg.table=="FALSE",arr.ind=T)] <- ""
+alg.table[which(is.na(alg.table),arr.ind=T)] <- "?"
+
+knitr::kable(alg.table, format="html", caption="Metrics preserved by different randomization algorithms.", align=c("r",rep("c",14)), excape=FALSE )
+```
+

@@ -5,6 +5,8 @@ Version: 0.1.0
 Author: Ian Hoppe
 Maintainer: Ian Hoppe <ian.hoppe@huskers.unl.edu>
 Description: Null model algorithms adapted from Program Co-Occurrence (Werner Ulrich, 2008). Intended as an extension of the `EcoSimR::sim*()` functions, and translated from the Fortran subroutines described in Ulrich and Gotelli (2010).
+Suggests: knitr, rmarkdown, EcoSimR
+VignetteBuilder: knitr
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true

@@ -1,7 +1,26 @@
 
-asimTest <- function( func, r=10, ... ){
+#' Tool for testing randomization algorithms
+#'
+#' Test for preservation of various matrix metrics by abundance matrix randomization algorithms
+#' (null models)
+#'
+#' @details
+#'
+#'
+#' @param func [asim*()] function to test (passed as symbol)
+#' @param tmat test matrix; default option generates a random matrix using [rmat()]
+#' @param r number of randomizations to perform
+#'
+#' @seealso
+#' [rmat()], [summarize.mat()]
+#'
+#' @export
+#'
+#' @examples
+#' asimTest(asim10, r=100)
+asimTest <- function( func, tmat=NULL, r=10, ... ){
 
-  tmat <- rmat(...)
+  if( !is.null(tmat) ) tmat <- rmat(...)
 
   cat("\nPerforming randomizations...\n\n")
   nulls <- replicate(r, func(tmat))
