@@ -1,3 +1,4 @@
+
 asimTest <- function( func, r=10, ... ){
 
   tmat <- rmat(...)
@@ -5,8 +6,8 @@ asimTest <- function( func, r=10, ... ){
   cat("\nPerforming randomizations...\n\n")
   nulls <- replicate(r, func(tmat))
 
-  tmatsum <- sumMat(tmat)
-  nullsums <- do.call( c, apply(nulls, 3, sumMat) )
+  tmatsum <- summarize.mat(tmat)
+  nullsums <- do.call( c, apply(nulls, 3, summarize.mat) )
 
   check <- data.frame( stat=names(tmatsum), preserved=NA_integer_ )
   checks <- length(tmatsum)
