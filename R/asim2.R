@@ -1,21 +1,4 @@
 
-# Abundance swap within rows (subroutine pr)
-# Equivalent to algorithm PR in Ulrich and Gotelli (2010).
-#
-# Randomizes an abundance matrix by reshuffling populations equiprobably
-# among the nonempty cells of each row.
-#
-#                     Preserved?
-#     Total abundance:    √
-#   Total occurrences:    √
-#         Occurrences:    √
-#  Species abundances:    √
-# Species occurrences:    √
-#     Site abundances:
-#     Site richnesses:    √
-#
-# speciesData is a species-by-site abundance matrix
-
 asim2 <- function(speciesData){
 
   spp <- nrow(speciesData)

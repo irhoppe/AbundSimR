@@ -1,23 +1,4 @@
 
-# Resampling with occurrences and total abundance fixed (subroutine oa)
-# Equivalent to algorithm OS in Ulrich and Gotelli (2010).
-#
-# Randomizes an abundance matrix by randomly assigning individuals to nonempty
-# cells, with probabilities proportional to observed row and column abundance
-# totals. Individuals are sequentially assigned to the matrix in this way until,
-# the total (original) matrix abundance is reached.
-#
-#                     Preserved?
-#     Total abundance:    √
-#   Total occurrences:    √
-#         Occurrences:    √
-#  Species abundances:
-# Species occurrences:    √
-#     Site abundances:
-#     Site richnesses:    √
-#
-# speciesData is a species-by-site abundance matrix
-
 asim4 <- function(speciesData){
 
   occData <- speciesData > 0

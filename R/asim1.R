@@ -1,21 +1,4 @@
 
-# Abundance swap (subroutine pm)
-# Equivalent to algorithm PM in Ulrich and Gotelli (2010).
-#
-# Randomizes an abundance matrix by reshuffling populations equiprobably
-# among the nonempty cells of the entire matrix.
-#
-#                     Preserved?
-#     Total abundance:    √
-#   Total occurrences:    √
-#         Occurrences:    √
-#  Species abundances:
-# Species occurrences:    √
-#     Site abundances:
-#     Site richnesses:    √
-#
-# speciesData is a species-by-site abundance matrix
-
 asim1 <- function(speciesData){
 
   occData <- speciesData > 0

@@ -1,23 +1,4 @@
 
-# Resampling with row/column abundances fixed (subroutine it)
-# Equivalent to algorithm IT in Ulrich and Gotelli (2010).
-#
-# Randomizes an abundance matrix by randomly assigning individuals to matrix
-# cells with probabilities proportional to observed row and column abundance
-# totals until, for each row and column, total abundances are reached. Does not
-# preserve species occurrence/non-occurrence.
-#
-#                     Preserved?
-#     Total abundance:    √
-#   Total occurrences:
-#         Occurrences:
-#  Species abundances:    √
-# Species occurrences:
-#     Site abundances:    √
-#     Site richnesses:
-#
-# speciesData is a species-by-site abundance matrix
-
 asim10 <- function(speciesData){
 
   spp <- nrow(speciesData)
