@@ -26,11 +26,12 @@ Preserves total occurrences and species occurrences, but allows abundances and s
 to vary.
 }
 \examples{
-amat <- rmat(20,12) # creates a random 20Ã—12 abundance matrix
+amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 asim8(amat)         # performs proportional abundance resampling algorithm
 }
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+
 Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 }
 \seealso{

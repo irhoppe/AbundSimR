@@ -24,11 +24,12 @@ Preserves total matrix abundance and occurrences as well as species abundances (
 allows site abundances (column totals) to vary equiprobably.
 }
 \examples{
-amat <- rmat(20,12) # creates a random 20Ã—12 abundance matrix
+amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 asim2(amat)         # performs equiprobable row abundance swap algorithm
 }
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+
 Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 }
 \seealso{

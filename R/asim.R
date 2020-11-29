@@ -19,12 +19,13 @@
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim1(amat)         # performs equiprobable abundance swap algorithm
 asim1 <- function(speciesData){
 
@@ -66,12 +67,13 @@ asim1 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim2(amat)         # performs equiprobable row abundance swap algorithm
 asim2 <- function(speciesData){
 
@@ -114,12 +116,13 @@ asim2 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim3(amat)         # performs equiprobable column abundance swap algorithm
 asim3 <- function(speciesData){
 
@@ -163,12 +166,13 @@ asim3 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim4(amat)         # performs proportional abundance resampling algorithm
 asim4 <- function(speciesData){
 
@@ -211,12 +215,13 @@ asim4 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim5(amat)         # performs proportional abundance resampling algorithm
 asim5 <- function(speciesData){
 
@@ -275,12 +280,13 @@ asim5 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim6(amat)         # performs proportional abundance resampling algorithm
 asim6 <- function(speciesData){
 
@@ -331,12 +337,13 @@ asim6 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim7(amat)         # performs proportional abundance resampling algorithm
 asim7 <- function(speciesData){
 
@@ -400,12 +407,13 @@ asim7 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim8(amat)         # performs proportional abundance resampling algorithm
 asim8 <- function(speciesData){
 
@@ -452,12 +460,13 @@ asim8 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim9(amat)         # performs proportional abundance resampling algorithm
 asim9 <- function(speciesData){
 
@@ -503,12 +512,13 @@ asim9 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim10(amat)        # performs proportional abundance resampling algorithm
 asim10 <- function(speciesData){
 
@@ -557,12 +567,13 @@ asim10 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim11(amat)        # performs proportional abundance resampling algorithm
 asim11 <- function(speciesData){
 
@@ -605,12 +616,13 @@ asim11 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim12(amat)        # performs proportional abundance resampling algorithm
 asim12 <- function(speciesData){
 
@@ -656,12 +668,13 @@ asim12 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim13(amat)        # performs proportional abundance resampling algorithm
 asim13 <- function(speciesData){
 
@@ -705,12 +718,13 @@ asim13 <- function(speciesData){
 #'
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
-#' amat <- rmat(20,12) # creates a random 20×12 abundance matrix
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim14(amat)        # performs proportional abundance resampling algorithm
 asim14 <- function(speciesData){
 

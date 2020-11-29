@@ -25,11 +25,12 @@ constrained to observed species richness; equivalent to algorithm IT in Ulrich a
 Preserves species and site abundances, but allows occurrences to vary.
 }
 \examples{
-amat <- rmat(20,12) # creates a random 20Ã—12 abundance matrix
+amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 asim10(amat)        # performs proportional abundance resampling algorithm
 }
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+
 Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
 }
 \seealso{
