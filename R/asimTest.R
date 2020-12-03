@@ -10,6 +10,7 @@
 #' @param func [asim*()] function to test (passed as symbol)
 #' @param tmat test matrix; default option generates a random matrix using [rmat()]
 #' @param r number of randomizations to perform
+#' @param ... additional arguments to be passed to [rmat()]
 #'
 #' @seealso
 #' [rmat()], [summarize.mat()]
