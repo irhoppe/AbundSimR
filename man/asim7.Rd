@@ -28,8 +28,10 @@ May generate matrices with empty columns (sites).
 }
 
 \examples{
+\dontrun{
 amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 asim7(amat)         # performs proportional abundance resampling algorithm
+}
 }
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.

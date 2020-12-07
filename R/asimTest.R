@@ -14,9 +14,6 @@
 #'
 #' @seealso
 #' [rmat()], [summarize.mat()]
-#'
-#' @examples
-#' asimTest(asim10, r=100)
 asimTest <- function( func, tmat=NULL, rep=100, ... ){
 
   if( is.null(tmat) ) tmat <- rmat(...)

@@ -22,8 +22,10 @@ Resamples total abundance conditional on and constrained by marginal sums; equiv
 OF in Ulrich and Gotelli (2010), and to the Fortran \verb{subroutine of} in Ulrich (2008).
 }
 \examples{
+\dontrun{
 amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 asim5(amat)         # performs proportional abundance resampling algorithm
+}
 }
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.

@@ -22,9 +22,6 @@ Test for preservation of various matrix metrics by abundance matrix randomizatio
 \details{
 
 }
-\examples{
-asimTest(asim10, r=100)
-}
 \seealso{
 \code{\link[=rmat]{rmat()}}, \code{\link[=summarize.mat]{summarize.mat()}}
 }

@@ -206,8 +206,10 @@ asim4 <- function(speciesData){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim5(amat)         # performs proportional abundance resampling algorithm
+#' }
 asim5 <- function(speciesData){
 
   stop("asim5 is untested/incomplete")
@@ -328,8 +330,10 @@ asim6 <- function(speciesData){
 #' @export
 #'
 #' @examples
+#' \dontrun{
 #' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
 #' asim7(amat)         # performs proportional abundance resampling algorithm
+#' }
 asim7 <- function(speciesData){
 
   stop("asim7 is untested/incomplete")
@@ -707,10 +711,6 @@ asim13 <- function(speciesData){
 #' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
-#'
-#' @examples
-#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
-#' asim14(amat)        # performs proportional abundance resampling algorithm
 asim14 <- function(speciesData){
 
   stop("asim14 is untested/incomplete")

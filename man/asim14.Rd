@@ -24,10 +24,6 @@ Gotelli (2008).
 May generate matrices with empty rows(species) or columns (sites).
 }
 
-\examples{
-amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
-asim14(amat)        # performs proportional abundance resampling algorithm
-}
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 
