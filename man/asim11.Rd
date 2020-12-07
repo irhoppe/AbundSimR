@@ -19,7 +19,7 @@ total row abundance is reached.
 }
 \details{
 Resamples species abundances conditional on column sums and constrained to observed row abundance;
-equivalent to algorithm ITR in Ulrich and Gotelli (2010), and to the Fortran `subroutine itr` in
+equivalent to algorithm ITR in Ulrich and Gotelli (2010), and to the Fortran \verb{subroutine itr} in
 Ulrich (2008).
 }
 \examples{
@@ -29,22 +29,36 @@ asim11(amat)        # performs proportional abundance resampling algorithm
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 
-Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. \emph{Ecology} 91:3384-3397.
 }
 \seealso{
 Other abundance matrix null models: 
+\code{\link{asim10_f}()},
 \code{\link{asim10}()},
+\code{\link{asim11_f}()},
+\code{\link{asim12_f}()},
 \code{\link{asim12}()},
+\code{\link{asim13_f}()},
 \code{\link{asim13}()},
+\code{\link{asim14_f}()},
 \code{\link{asim14}()},
+\code{\link{asim1_f}()},
 \code{\link{asim1}()},
+\code{\link{asim2_f}()},
 \code{\link{asim2}()},
+\code{\link{asim3_f}()},
 \code{\link{asim3}()},
+\code{\link{asim4_f}()},
 \code{\link{asim4}()},
+\code{\link{asim5_f}()},
 \code{\link{asim5}()},
+\code{\link{asim6_f}()},
 \code{\link{asim6}()},
+\code{\link{asim7_f}()},
 \code{\link{asim7}()},
+\code{\link{asim8_f}()},
 \code{\link{asim8}()},
+\code{\link{asim9_f}()},
 \code{\link{asim9}()}
 }
 \concept{abundance matrix null models}

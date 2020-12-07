@@ -4,12 +4,14 @@
 \alias{asimTest}
 \title{Tool for testing randomization algorithms}
 \usage{
-asimTest(func, tmat = NULL, r = 10, ...)
+asimTest(func, tmat = NULL, rep = 100, ...)
 }
 \arguments{
-\item{func}{[asim*()] function to test (passed as symbol)}
+\item{func}{\code{\link[=asim*]{asim*()}} function to test (passed as symbol)}
 
-\item{tmat}{test matrix; default option generates a random matrix using [rmat()]}
+\item{tmat}{test matrix; default option generates a random matrix using \code{\link[=rmat]{rmat()}}}
+
+\item{...}{additional arguments to be passed to \code{\link[=rmat]{rmat()}}}
 
 \item{r}{number of randomizations to perform}
 }
@@ -24,5 +26,5 @@ Test for preservation of various matrix metrics by abundance matrix randomizatio
 asimTest(asim10, r=100)
 }
 \seealso{
-[rmat()], [summarize.mat()]
+\code{\link[=rmat]{rmat()}}, \code{\link[=summarize.mat]{summarize.mat()}}
 }

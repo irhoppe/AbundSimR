@@ -2,7 +2,7 @@
 % Please edit documentation in R/asim.R
 \name{asim3}
 \alias{asim3}
-\title{Abundance swap within columns}
+\title{Abundance swap within rows}
 \usage{
 asim3(speciesData)
 }
@@ -14,38 +14,52 @@ shuffled abundance matrix
 }
 \description{
 Randomizes an abundance matrix by reshuffling populations equiprobably among the nonempty cells
-of each column.
+of each row.
 }
 \details{
-Performs a series of abundance swaps within columns (sites); equivalent to algorithm PC in
-Ulrich and Gotelli (2010), and to the Fortran `subroutine pc` in Ulrich (2008).
+Performs a series of abundance swaps within rows (species); equivalent to algorithm PR in Ulrich
+and Gotelli (2010), and to the Fortran \verb{subroutine pr} in Ulrich (2008).
 
-Preserves total matrix abundance and occurrences as well as site abundances (column totals), but
-allows species abundances (row totals) to vary equiprobably.
+Preserves total matrix abundance and occurrences as well as species abundances (row totals), but
+allows site abundances (column totals) to vary equiprobably.
 }
 \examples{
 amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
-asim3(amat)         # performs equiprobable column abundance swap algorithm
+asim3(amat)         # performs equiprobable row abundance swap algorithm
 }
 \references{
 Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 
-Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. \emph{Ecology} 91:3384-3397.
 }
 \seealso{
 Other abundance matrix null models: 
+\code{\link{asim10_f}()},
 \code{\link{asim10}()},
+\code{\link{asim11_f}()},
 \code{\link{asim11}()},
+\code{\link{asim12_f}()},
 \code{\link{asim12}()},
+\code{\link{asim13_f}()},
 \code{\link{asim13}()},
+\code{\link{asim14_f}()},
 \code{\link{asim14}()},
+\code{\link{asim1_f}()},
 \code{\link{asim1}()},
+\code{\link{asim2_f}()},
 \code{\link{asim2}()},
+\code{\link{asim3_f}()},
+\code{\link{asim4_f}()},
 \code{\link{asim4}()},
+\code{\link{asim5_f}()},
 \code{\link{asim5}()},
+\code{\link{asim6_f}()},
 \code{\link{asim6}()},
+\code{\link{asim7_f}()},
 \code{\link{asim7}()},
+\code{\link{asim8_f}()},
 \code{\link{asim8}()},
+\code{\link{asim9_f}()},
 \code{\link{asim9}()}
 }
 \concept{abundance matrix null models}

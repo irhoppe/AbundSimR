@@ -20,7 +20,7 @@
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -29,70 +29,17 @@
 #' asim1(amat)         # performs equiprobable abundance swap algorithm
 asim1 <- function(speciesData){
 
-  occData <- speciesData > 0
-  spp <- nrow(speciesData)
-  sit <- ncol(speciesData)
-  spsi <- length(speciesData)
+  occData <- speciesData > 0                     # identify occurrences
+  spsi <- length(speciesData)                    # count the number of cells in the matrix
 
-  swaps <- 100*spsi + rbinom(1,1,0.5)
+  swaps <- 100*spsi + rbinom(1,1,0.5)            # randomize swaps (mainly to avoid odd/even bias)
 
-  for( s in 1:swaps ){
-    ij <- sample(spsi, 2, prob=occData)
-    a <- speciesData[ij[1]]
-    speciesData[ij[1]] <- speciesData[ij[2]]
-    speciesData[ij[2]] <- a
+  for( s in 1:swaps ){                           # for each swap...
+    ij <- sample(spsi, 2, prob=occData)          #    pick two non-empty cells at random
+    speciesData[ij] <- speciesData[rev(ij)]      #    swap the values of the two cells
   }
 
-  return(speciesData)
-
-}
-
-#' Abundance swap within rows
-#'
-#' Randomizes an abundance matrix by reshuffling populations equiprobably among the nonempty cells
-#' of each row.
-#'
-#' @details
-#' Performs a series of abundance swaps within rows (species); equivalent to algorithm PR in Ulrich
-#' and Gotelli (2010), and to the Fortran `subroutine pr` in Ulrich (2008).
-#'
-#' Preserves total matrix abundance and occurrences as well as species abundances (row totals), but
-#' allows site abundances (column totals) to vary equiprobably.
-#'
-#' @param speciesData species-by-site abundance matrix
-#'
-#' @return shuffled abundance matrix
-#'
-#' @family abundance matrix null models
-#'
-#' @references
-#' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
-#'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
-#'
-#' @export
-#'
-#' @examples
-#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
-#' asim2(amat)         # performs equiprobable row abundance swap algorithm
-asim2 <- function(speciesData){
-
-  spp <- nrow(speciesData)
-  sit <- ncol(speciesData)
-  Ospp <- rowSums(speciesData>0)
-
-  for( i in 1:spp ){
-    if( Ospp[i] <= 1 ) next
-    swaps <- 100*sit + rbinom(1,1,0.5)
-    for( s in 1:swaps ){
-      j <- sample(sit, 2, prob=speciesData[i,]>0)
-      a <- speciesData[i,j[1]]
-      speciesData[i,j[1]] <- speciesData[i,j[2]]
-      speciesData[i,j[2]] <- a
-    }
-  }
-
-  return(speciesData)
+  return(speciesData)                            # return the shuffled matrix
 
 }
 
@@ -117,31 +64,74 @@ asim2 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
 #' @examples
 #' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
-#' asim3(amat)         # performs equiprobable column abundance swap algorithm
-asim3 <- function(speciesData){
+#' asim2(amat)         # performs equiprobable column abundance swap algorithm
+asim2 <- function(speciesData){
 
-  spp <- nrow(speciesData)
-  sit <- ncol(speciesData)
-  Ssit <- colSums(speciesData>0)
+  spp <- nrow(speciesData)                       # compute the number of rows
+  Ssit <- which(colSums(speciesData>0)>1)        # identify columns with at least two non-empty cells
 
-  for( j in 1:sit ){
-    if( Ssit[j] <= 1 ) next
-    swaps <- 100*spp + rbinom(1,1,0.5)
-    for( s in 1:swaps ){
-      i <- sample(spp, 2, prob=speciesData[,j]>0)
-      a <- speciesData[i[1],j]
-      speciesData[i[1],j] <- speciesData[i[2],j]
-      speciesData[i[2],j] <- a
+  for( j in Ssit ){                              # for each identified column..
+    rowprob <- speciesData[,j]>0                 #    identify non-empty cells
+    swaps <- 100*spp + rbinom(1,1,0.5)           #    perform a randomized number of swaps
+    for( s in 1:swaps ){                         #    for each swap...
+      i <- sample(spp, 2, prob=rowprob)          #       pick two non-empty cells at random
+      speciesData[i,j] <- speciesData[rev(i),j]  #       swap the values of the two cells
     }
   }
 
-  return(speciesData)
+  return(speciesData)                            # return the shuffled matrix
+
+}
+
+#' Abundance swap within rows
+#'
+#' Randomizes an abundance matrix by reshuffling populations equiprobably among the nonempty cells
+#' of each row.
+#'
+#' @details
+#' Performs a series of abundance swaps within rows (species); equivalent to algorithm PR in Ulrich
+#' and Gotelli (2010), and to the Fortran `subroutine pr` in Ulrich (2008).
+#'
+#' Preserves total matrix abundance and occurrences as well as species abundances (row totals), but
+#' allows site abundances (column totals) to vary equiprobably.
+#'
+#' @param speciesData species-by-site abundance matrix
+#'
+#' @return shuffled abundance matrix
+#'
+#' @family abundance matrix null models
+#'
+#' @references
+#' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
+#'
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
+#'
+#' @export
+#'
+#' @examples
+#' amat <- rmat(20,12) # creates a random 20 x 12 abundance matrix
+#' asim3(amat)         # performs equiprobable row abundance swap algorithm
+asim3 <- function(speciesData){
+
+  sit <- ncol(speciesData)                       # compute the number of columns
+  Ospp <- which(rowSums(speciesData>0)>1)        # identify rows with at least two non-empty cells
+
+  for( i in Ospp ){                              # for each identified row...
+    colprob <- speciesData[i,]>0                 #    identify non-empty cells
+    swaps <- 100*sit + rbinom(1,1,0.5)           #    perform a randomized number of swaps
+    for( s in 1:swaps ){                         #    for each swap...
+      j <- sample(sit, 2, prob=colprob)          #       pick two non-empty cells at random
+      speciesData[i,j] <- speciesData[i,rev(j)]  #       swap the values of the two cells
+    }
+  }
+
+  return(speciesData)                            # return the shuffled matrix
 
 }
 
@@ -167,7 +157,7 @@ asim3 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -176,24 +166,19 @@ asim3 <- function(speciesData){
 #' asim4(amat)         # performs proportional abundance resampling algorithm
 asim4 <- function(speciesData){
 
-  occData <- speciesData > 0
-  spp <- nrow(speciesData)
-  sit <- ncol(speciesData)
-  Nspp <- rowSums(speciesData)
-  Nsit <- colSums(speciesData)
-  Ntot <- sum(speciesData)
-  Otot <- sum(occData)
-  spsi <- length(speciesData)
+  Nspp <- rowSums(speciesData)                   # compute row abundances
+  Nsit <- colSums(speciesData)                   # compute column abundances
+  Ntot <- sum(speciesData)                       # compute total abundance
+  speciesData <- (speciesData > 0) + 0           # convert abundance matrix into presence-absence matrix
+  Otot <- sum(speciesData)                       # compute total occurrences
+  spsi <- length(speciesData)                    # count the number of cells in the matrix
 
-  speciesData <- occData + 0
+  cellprop <- (Nspp %*% t(Nsit)) * speciesData   # compute cell weights as product of corresponding row and column abundances
+  ij <- sample(spsi, Ntot-Otot, replace=TRUE, prob=cellprop) # re-distribute total abundance among occupied cells based on cell weights
+  nadd <- as.data.frame(table(ij),stringsAsFactors=FALSE)    # re-organize cell ids/assignments
+  speciesData[as.integer(nadd$ij)] <- nadd$Freq+1            # make assignments
 
-  while( Otot < Ntot ){
-    ij <- sample(spsi, 1, prob=occData)
-    speciesData[ij] <- speciesData[ij] + 1
-    Otot <- Otot + 1
-  }
-
-  return(speciesData)
+  return(speciesData)                            # return the resampled matrix
 
 }
 
@@ -205,7 +190,7 @@ asim4 <- function(speciesData){
 #'
 #' @details
 #' Resamples total abundance conditional on and constrained by marginal sums; equivalent to algorithm
-#' OF in Ulrich and Gotelli (2010), and to the Fortran `subroutine oaf` in Ulrich (2008).
+#' OF in Ulrich and Gotelli (2010), and to the Fortran `subroutine of` in Ulrich (2008).
 #'
 #' @param speciesData species-by-site abundance matrix
 #'
@@ -216,7 +201,7 @@ asim4 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -281,7 +266,7 @@ asim5 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -338,7 +323,7 @@ asim6 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -408,7 +393,7 @@ asim7 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -461,7 +446,7 @@ asim8 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -513,7 +498,7 @@ asim9 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -568,7 +553,7 @@ asim10 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -617,7 +602,7 @@ asim11 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -669,7 +654,7 @@ asim12 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
@@ -719,7 +704,7 @@ asim13 <- function(speciesData){
 #' @references
 #' Ulrich, W. 2008. Program Co-Occurrence. Version 1.
 #'
-#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. Ecology 91:3384-3397.
+#' Ulrich, W. and Gotelli, N.J. 2010. Null model analysis of species associations using abundance data. *Ecology* 91:3384-3397.
 #'
 #' @export
 #'
