@@ -169,7 +169,7 @@ asim4 <- function(speciesData){
   Nspp <- rowSums(speciesData)                   # compute row abundances
   Nsit <- colSums(speciesData)                   # compute column abundances
   Ntot <- sum(speciesData)                       # compute total abundance
-  speciesData <- (speciesData > 0) + 0           # convert abundance matrix into presence-absence matrix
+  speciesData <- (speciesData > 0) + 0           # convert abundance matrix into presence-absence matrix (to initialize resampling)
   Otot <- sum(speciesData)                       # compute total occurrences
   spsi <- length(speciesData)                    # count the number of cells in the matrix
 

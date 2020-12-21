@@ -1,4 +1,4 @@
-Package: cooccur
+Package: AbundSimR
 Type: Package
 Title: Abundance Matrix Randomizations
 Version: 0.1.0

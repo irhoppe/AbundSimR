@@ -154,13 +154,13 @@ SUBROUTINE oa(mat, sp, si)
       IF(mat(i,j) > 0) THEN
         arow(i)=arow(i)+mat(i,j)       ! compute column sums
         mat(i,j)=1.0                   ! convert abundance matrix to presence-absence matrix
-        k1=k1+1                        ! compute total abundance
+        k1=k1+1                        ! compute total occurrences
       END IF
   4 CONTINUE
 3 CONTINUE
   DO WHILE(k1 < item)
-    CALL prob(arow,sp,ipos)
-    CALL prob(acol,si,jpos)
+    CALL prob(arow,sp,ipos)            ! proportional sampling of row abundances
+    CALL prob(acol,si,jpos)            ! proportional sampling of column abundances
     IF(mat(ipos,jpos) > 0) THEN
       mat(ipos,jpos)=mat(ipos,jpos)+1
       k1=k1+1
